@@ -19,9 +19,9 @@ def main():
     data = get_file_data()
     model = parse_data(data)
     answer = 0
-    logger.info(f"Puzzle1: <SUMMARY>: {answer}")
+    print(f"Puzzle1: <SUMMARY>: {answer}")
     answer = 0
-    logger.info(f"Puzzle2: <SUMMARY>: {answer}")
+    print(f"Puzzle2: <SUMMARY>: {answer}")
     
 if __name__ == '__main__':
     main()

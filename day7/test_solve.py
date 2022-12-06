@@ -11,10 +11,11 @@ def test_data():
     return text
 
 def test_parse_input(test_data):
-    text_stream = parse_data(test_data)
+    grid = parse_data(test_data)
+    assert type(grid) == np.ndarray
+    assert grid[1,3] == 5
+    assert grid.ndim == 2
+    assert grid.shape == (10,10)
   
 def test_all(test_data):
-    text_stream = 'nznrnfrfntjfmvfwmzdfjlvtqnbhcprsg'
-    assert find_first_x_unique(text_stream, 4) == 10
-    assert find_first_x_unique(text_stream, 14) == 29
-    
+    grid = parse_data(test_data)

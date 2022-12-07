@@ -1,6 +1,5 @@
 import logging
 import os
-import numpy as np
 
 logging.basicConfig(level=os.environ.get("LOGLEVEL", "INFO"))
 logger = logging.getLogger(__name__)

@@ -1,6 +1,5 @@
 import pytest
 import os
-import numpy as np
 from .solve import *
 
 @pytest.fixture
@@ -12,13 +11,11 @@ def test_data():
     return text
 
 def test_parse_input(test_data):
-    heights = parse_data(test_data)
-    assert heights.ndim == 2
-    assert heights.shape == (5,5)
-    assert heights[2][0] == 6
-    assert heights[4,4] == 0
+    grid = parse_data(test_data)
+    assert type(grid) == np.ndarray
+    assert grid[1,3] == 5
+    assert grid.ndim == 2
+    assert grid.shape == (10,10)
   
 def test_all(test_data):
-    trees = parse_data(test_data)
-    assert count_visible(trees) == 21
-    assert get_max_scenic_score(trees) == 8
+    grid = parse_data(test_data)

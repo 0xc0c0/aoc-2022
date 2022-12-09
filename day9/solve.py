@@ -67,15 +67,8 @@ def move_bigger(dir, knots_loc):
         
     for i in range(1,10):
         if is_far_distance(knots_loc[i-1], knots_loc[i]):
-            if get_distance_sq(knots_loc[i-1], knots_loc[i]) == 4:
-                # in line, follow vector, no change in vector to follow.
-                # move 1 unit (not 2) toward lead knot.
-                knots_loc[i] += (knots_loc[i-1] - knots_loc[i])//2
-                
-            else:
-                #diagonal, need to work from the bigger part of the distance
-                total_d = knots_loc[i-1] - knots_loc[i]
-                knots_loc[i] += np.sign(total_d)
+            total_d = knots_loc[i-1] - knots_loc[i]
+            knots_loc[i] += np.sign(total_d)
 
     return knots_loc
 

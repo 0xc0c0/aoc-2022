@@ -23,15 +23,13 @@ def test_all(test_data):
     assert len(monkey_notes[0].items) == 4
     assert 27 in monkey_notes[0].items
     
-    # reset data/state
-    monkey_notes = parse_data(test_data)
+    monkey_notes = parse_data(test_data) # reset data/state
     run_round(monkey_notes)
     assert monkey_notes[0].items == [20, 23, 27, 26]
     run_rounds(monkey_notes, 19)
     assert [mn.total_inspected for mn in monkey_notes] == [101, 95, 7, 105]
     
-    # reset data/state
-    monkey_notes = parse_data(test_data)
+    monkey_notes = parse_data(test_data) # reset data/state
     run_rounds_2(monkey_notes, 1)
     assert [mn.total_inspected for mn in monkey_notes] == [2,4,3,6]
     run_rounds_2(monkey_notes, 19)

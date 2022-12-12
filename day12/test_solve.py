@@ -11,11 +11,17 @@ def test_data():
     return text
 
 def test_parse_input(test_data):
-    grid = parse_data(test_data)
-    assert type(grid) == np.ndarray
-    assert grid[1,3] == 5
-    assert grid.ndim == 2
-    assert grid.shape == (10,10)
+    heights, start, end = parse_data(test_data)
+    assert type(heights) == np.ndarray
+    assert heights[1,3] == 18
+    assert heights.ndim == 2
+    assert heights.shape == (5,8)
+    assert start == (0,0)
+    assert end == (2,5)
   
 def test_all(test_data):
-    grid = parse_data(test_data)
+    heights, start, end = parse_data(test_data)
+    best = run_moves(heights, start, end)
+    assert best[end] == 31
+    fewest = find_fastest_starting_point(heights, end)
+    assert fewest == 29

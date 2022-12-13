@@ -16,10 +16,9 @@ def test_parse_input(test_data):
     assert len(pairs) == 8
     assert len(pairs[3]) == 2
     assert pairs[1][1] == [[1],4]
-  
+
 def test_all(test_data):
     pairs = parse_data(test_data)
     assert sum(get_ordered_pairs_indices(pairs)) == 13
-    pairs = parse_data(test_data)
     ordered_packets = get_ordered_packets(pairs)
     assert get_decoder_key(ordered_packets) == 140

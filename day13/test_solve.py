@@ -11,11 +11,15 @@ def test_data():
     return text
 
 def test_parse_input(test_data):
-    grid = parse_data(test_data)
-    assert type(grid) == np.ndarray
-    assert grid[1,3] == 5
-    assert grid.ndim == 2
-    assert grid.shape == (10,10)
+    pairs = parse_data(test_data)
+    assert type(pairs) == list
+    assert len(pairs) == 8
+    assert len(pairs[3]) == 2
+    assert pairs[1][1] == [[1],4]
   
 def test_all(test_data):
-    grid = parse_data(test_data)
+    pairs = parse_data(test_data)
+    assert sum(get_ordered_pairs_indices(pairs)) == 13
+    pairs = parse_data(test_data)
+    ordered_packets = get_ordered_packets(pairs)
+    assert get_decoder_key(ordered_packets) == 140

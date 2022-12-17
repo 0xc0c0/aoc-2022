@@ -11,11 +11,20 @@ def test_data():
     return text
 
 def test_parse_input(test_data):
-    grid = parse_data(test_data)
-    assert type(grid) == np.ndarray
-    assert grid[1,3] == 5
-    assert grid.ndim == 2
-    assert grid.shape == (10,10)
+    rock_lines = parse_data(test_data)
+    assert type(rock_lines) == list
+    assert len(rock_lines) == 2
+    assert len(rock_lines[0]) == 3
+    assert len(rock_lines[0][0]) == 2
+    assert rock_lines[0][1][1] == 6
+    rp = get_all_rock_points(rock_lines)
+    assert len(rp) == 20
   
 def test_all(test_data):
-    grid = parse_data(test_data)
+    rock_lines = parse_data(test_data)
+    rp = get_all_rock_points(rock_lines)
+    sp = get_all_sand_points(rp)
+    assert len(sp) == 24
+    rp2 = add_floor(rp)
+    sp2 = get_all_sand_points(rp2, check_infinity=False)
+    assert len(sp2) == 93
